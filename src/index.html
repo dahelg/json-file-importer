@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Example HTML File</title>
+</head>
+
+<body>
+    <div id="json-content"></div>
+    <script>
+        fetch('example.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Just want to see the JSON content in the HTML file without any further formatting
+                const jsonContent = JSON.stringify(data);
+                document.getElementById("json-content").innerText = jsonContent;
+            });
+    </script>
+</body>
+
+</html>
