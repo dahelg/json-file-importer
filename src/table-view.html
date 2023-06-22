@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Example HTML File</title>
+</head>
+
+<body>
+    <table id="json-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        fetch('example.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                console.log(Object.entries(data));
+                console.log(Array.isArray(data));
+                const tableBody = document.querySelector('#json-table tbody');
+
+                const row = document.createElement('tr');
+                const nameCell = document.createElement('td');
+                console.log(data.name);
+                nameCell.innerText = data.name;
+                const ageCell = document.createElement('td');
+                ageCell.textContent = data.age;
+                const emailCell = document.createElement('td');
+                emailCell.textContent = data.email;
+                row.appendChild(nameCell);
+                row.appendChild(ageCell);
+                row.appendChild(emailCell);
+                tableBody.appendChild(row);
+            });
+    </script>
+</body>
+
+</html>
